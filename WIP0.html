@@ -4,13 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Index</title>
-<link rel="stylesheet" href="./stylesheet/stylesheetWIP0.css"> <!-- Link to external CSS file if you have one-->
+<link rel="stylesheet" href="./stylesheet/stylesheetWIP0.css">
 </head>
 <body>
+<style>
+.hidden { display: none; }
+.container { position: relative; height: 15vh; padding: 2px; }
+#button1 { position: absolute; left: 10%; top: 10%; }
+#button2 { position: absolute; left: 25%; top: 20%; }
+#button3 { position: absolute; left: 35%; top: 30%; }
+#button4 { position: absolute; left: 45%; top: 40%; }
+#textArea5 { position: absolute; left: 10%; top: 60%; }
+</style>
+</head>
+<body>
+
 <h1>Black Cherries</h1>
 <p>Poem by W. S. Merwin</p>
-  <p>Designed by Kiersten McComas</p>
-  <br><br>
+<p>Designed by Kiersten McComas</p>
+<br><br>
 
 <button type="button">Late in May</button>
 <br><br>
@@ -25,52 +37,36 @@
   <option value="young"></option>
   <option value="goldfinches"></option>
 </datalist>
+
 <p>flutter down through the day for the first time</p>
 
 <div class="container">
-  <button type="button" id="button1"
-    onclick="document.getElementById('button2').classList.remove('hidden')">
-    to find themselves
-  </button>
-<br><br>
-  <button type="button" class="hidden" id="button2"
-    onclick="document.getElementById('button3').classList.remove('hidden')">
-    among
-  </button>
-<br><br>
-
-  <button type="button" class="hidden" id="button3"
-    onclick="document.getElementById('button4').classList.remove('hidden')">
-   fallen
-  </button>
-<br><br>
-
-  <button type="button" class="hidden" id="button4"
-    onclick="document.getElementById('textArea5').classList.remove('hidden')">
-petals  </button>
+<button type="button" id="button1" onclick="openNextButton('button2')">to find themselves</button>
+<button type="button" class="hidden" id="button2" onclick="openNextButton('button3')">among</button>
+<button type="button" class="hidden" id="button3" onclick="openNextButton('button4')">fallen</button>
+<button type="button" class="hidden" id="button4" onclick="openNextButton('textArea5')">petals</button>
 </div>
-
 
 <p>cradling their day's colors in the day's</p>
 
 <label for="another-choice"></label>
 <input list="another-list" id="another-choice" name="another-choice" />
-
 <datalist id="another-list">
   <option value="shadows"></option>
 </datalist>
-<p>of the garden beside the old house
-</p>
+<p>of the garden beside the old house</p>
 
-<script src="./javascript/scriptWIP0.js"></script> 
-
-<style>
-
-</style>
-
-
-
-
+<script>
+let brightness = 255;
+function openNextButton(nextId) {
+  const elem = document.getElementById(nextId);
+  elem.classList.remove('hidden');
+  if(elem.tagName === "BUTTON"){
+    elem.style.backgroundColor = `rgb(${brightness},${brightness},${brightness})`;
+    brightness -= 50;
+  }
+}
+</script>
 
 </body>
 </html>

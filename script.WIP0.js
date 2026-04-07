@@ -1,19 +1,15 @@
 let brightness = 255;
 
-let firstButton = document.getElementById("button1");
-
-firstButton.style.backgroundColor = `rgb(${brightness}, ${brightness}, ${brightness})`;
-
-brightness -= 50;
-
+// Function to reveal the next button/textarea and adjust brightness
 function openNextButton(nextButtonId) {
-    let nextButton = document.getElementById(nextButtonId);
+  let nextElement = document.getElementById(nextButtonId);
 
-    nextButtonElement.classList.remove('hidden');
+  // Reveal element
+  nextElement.classList.remove('hidden');
 
-    let color = rgb(${brightness}, ${brightness}, ${brightness});
-
-    nextButtonElement.style.backgroundColor = color;
-    
-    brightness -= 50;
+  // Set background color for buttons only (not textarea)
+  if (nextElement.tagName === "BUTTON") {
+    nextElement.style.backgroundColor = `rgb(${brightness}, ${brightness}, ${brightness})`;
+    brightness -= 50; // decrease brightness for next button
+  }
 }
