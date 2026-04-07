@@ -34,12 +34,12 @@ body {
 
 /* Button positions */
 #button1 { position: absolute; left: 10%; top: 10%; }
-#button2 { position: absolute; left: 25%; top: 20%; }
-#button3 { position: absolute; left: 35%; top: 30%; }
-#button4 { position: absolute; left: 45%; top: 40%; }
+#button2 { position: absolute; left: 25%; top: 50%; }
+#button3 { position: absolute; left: 35%; top: 60%; }
+#button4 { position: absolute; left: 45%; top: 70%; }
 
 /* Textarea position */
-#textArea5 { position: absolute; left: 10%; top: 60%; }
+#textArea5 { position: absolute; left: 10%; top: 80%; }
 
 /* Optional: button styling */
 button {
@@ -77,12 +77,17 @@ button {
 
 <div class="container">
   <button type="button" id="button1" onclick="openNextButton('button2')">to find themselves</button>
+
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
   <button type="button" class="hidden" id="button2" onclick="openNextButton('button3')">among</button>
   <button type="button" class="hidden" id="button3" onclick="openNextButton('button4')">fallen</button>
   <button type="button" class="hidden" id="button4" onclick="openNextButton('textArea5')">petals</button>
 
 <p>cradling their day's colors in the day's</p>
-
+<br><br>
 <label for="another-choice"></label>
 <input list="another-list" id="another-choice" name="another-choice" />
 <datalist id="another-list">
