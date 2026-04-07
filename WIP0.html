@@ -9,9 +9,7 @@
 /* Hide elements */
 .hidden { display: none; }
 
-/* Body styling with background image and default font/color */
 body {
-  background-image: url('cherry.jpg'); /* make sure path is correct */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -19,6 +17,10 @@ body {
   color: white;
   margin: 0;
   padding: 20px;
+}
+
+body {
+  background-color: #611a43;
 }
 
 /* Container styling */
@@ -78,8 +80,6 @@ button {
   <button type="button" class="hidden" id="button2" onclick="openNextButton('button3')">among</button>
   <button type="button" class="hidden" id="button3" onclick="openNextButton('button4')">fallen</button>
   <button type="button" class="hidden" id="button4" onclick="openNextButton('textArea5')">petals</button>
-  <textarea id="textArea5" class="hidden" rows="4" cols="50" placeholder="Three years from now..."></textarea>
-</div>
 
 <p>cradling their day's colors in the day's</p>
 
