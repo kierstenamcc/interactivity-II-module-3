@@ -3,6 +3,12 @@ body {
   font-family: "Century Gothic", AppleGothic, sans-serif;
 }
 
+body {
+  background-image: url('cherry.jpg');
+}
+
+
+
 /* Apply to specific elements */
 h1 {
   font-family: "Century Gothic", Futura, sans-serif;

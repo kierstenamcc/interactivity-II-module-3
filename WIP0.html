@@ -3,26 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Index</title>
+<title>Black Cherries</title>
 <link rel="stylesheet" href="./stylesheet/stylesheetWIP0.css">
-
-</head>
-<body>
 <style>
+/* Hide elements */
 .hidden { display: none; }
-.container { position: relative; height: 15vh; padding: 2px; }
+
+/* Body styling with background image and default font/color */
+body {
+  background-image: url('cherry.jpg'); /* make sure path is correct */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Georgia', serif;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Container styling */
+.container {
+  position: relative;
+  height: 15vh;
+  padding: 2px;
+  background-color: rgba(0,0,0,0.4); /* semi-transparent black behind buttons */
+  border-radius: 8px;
+}
+
+/* Button positions */
 #button1 { position: absolute; left: 10%; top: 10%; }
 #button2 { position: absolute; left: 25%; top: 20%; }
 #button3 { position: absolute; left: 35%; top: 30%; }
 #button4 { position: absolute; left: 45%; top: 40%; }
+
+/* Textarea position */
 #textArea5 { position: absolute; left: 10%; top: 60%; }
+
+/* Optional: button styling */
+button {
+  font-family: 'Courier New', monospace;
+  color: black;
+  background-color: lightgray;
+  border: 2px solid #333;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 </style>
 </head>
 <body>
 
 <h1>Black Cherries</h1>
 <p>Poem by W. S. Merwin</p>
-<p>Designed by Kiersten McComas</p>
+<p>Designed by KAM</p>
 <br><br>
 
 <button type="button">Late in May</button>
