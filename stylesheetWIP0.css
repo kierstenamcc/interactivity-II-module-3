@@ -1,0 +1,23 @@
+.hidden { display: none; }
+
+.container {
+ height:40vh;
+ background-color: lightpink
+}
+#button2 {
+  position:absolute;
+  left: 20vw;
+  top: 45vw;
+}
+
+#button3 {
+  position:absolute;
+  left: 30vw;
+  top: 50vw;
+}
+
+#button4 {
+  position:absolute;
+  left: 40vw;
+  top: 60vw;
+}
