@@ -46,9 +46,9 @@ function startAnimation() {
   },
  });
   }
-});
-container.addEventListener("mousemove", function(event) {
+  container.addEventListener("mousemove", function(event) {
   clearTimeout(animationTimeout);
   addNewItem(event.pageX, event.pageY);
   animationTimeout = setTimeout(startAnimation, 100);
+});
 });
