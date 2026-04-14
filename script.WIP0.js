@@ -30,11 +30,11 @@ function startAnimation() {
   currentlyPlaying = true;
 
  gsap.to(".item", {
-  y: 1000
-  scale: 0.5
+  y: 1000,
+  scale: 0.5,
   opacity: 0,
   duration: 0.5,
-  stagger: 0.025
+  stagger: 0.025,
   onComplete: function () {
     this.targets().forEach((item) => {
       if (item.parentNode) {
