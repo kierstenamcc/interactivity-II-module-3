@@ -1,123 +1,14 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Black Cherries</title>
-<link rel="stylesheet" href="./stylesheet/stylesheetWIP0.css">
-<style>
-/* Hide elements */
-.hidden { display: none; }
-
-body {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'Georgia', serif;
-  color: white;
-  margin: 0;
-  padding: 20px;
-}
-
-body {
-  background-color: #611a43;
-}
-
-/* Container styling */
-.container {
-  position: relative;
-  height: 15vh;
-  padding: 2px;
-  background-color: rgba(0,0,0,0.4); /* semi-transparent black behind buttons */
-  border-radius: 8px;
-}
-
-/* Button positions */
-#button1 { position: absolute; left: 10%; top: 10%; }
-#button2 { position: absolute; left: 25%; top: 50%; }
-#button3 { position: absolute; left: 35%; top: 60%; }
-#button4 { position: absolute; left: 45%; top: 70%; }
-
-/* Textarea position */
-#textArea5 { position: absolute; left: 10%; top: 80%; }
-
-/* Optional: button styling */
-button {
-  font-family: 'Courier New', monospace;
-  color: black;
-  background-color: lightgray;
-  border: 2px solid #333;
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheetWIP0.css">
+    <title>Move your mouse</title>
 </head>
 <body>
+    <div class="items"></div>
+    <h1>Move your mouse to explore</h1>
 
-<h1><i>Black Cherries</i></h1>
-<p>Poem by W. S. Merwin</p>
-<p>Designed by Kiersten McComas</p>
-<br><br>
-
-<button type="button">Late in May</button>
-<br><br>
-<button type="button">as the light lengthens</button>
-<br><br>
-
-<label for="ice-cream-choice">toward summer</label>
-<input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
-
-<datalist id="ice-cream-flavors">
-  <option value="the"></option>
-  <option value="young"></option>
-  <option value="goldfinches"></option>
-</datalist>
-
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-
-<p>flutter down through the day for the first time</p>
-
-<div class="container">
-  <button type="button" id="button1" onclick="openNextButton('button2')">to find themselves</button>
-
-  <br><br>
-  <br><br>
-  <br><br>
-  <br><br>
-  <button type="button" class="hidden" id="button2" onclick="openNextButton('button3')">among</button>
-  <button type="button" class="hidden" id="button3" onclick="openNextButton('button4')">fallen</button>
-  <button type="button" class="hidden" id="button4" onclick="openNextButton('textArea5')">petals</button>
-
-<p>cradling their day's colors in the day's</p>
-<label for="another-choice"></label>
-<input list="another-list" id="another-choice" name="another-choice" />
-<datalist id="another-list">
-  <option value="shadows"></option>
-</datalist>
-<br><br>
-<br><br>
-<p>of the garden beside the old house</p>
-
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-
-
-<script>
-let brightness = 255;
-function openNextButton(nextId) {
-  const elem = document.getElementById(nextId);
-  elem.classList.remove('hidden');
-  if(elem.tagName === "BUTTON"){
-    elem.style.backgroundColor = `rgb(${brightness},${brightness},${brightness})`;
-    brightness -= 50;
-  }
-}
-</script>
-
+    <script src="script.WIP0.js"></script>
 </body>
 </html>

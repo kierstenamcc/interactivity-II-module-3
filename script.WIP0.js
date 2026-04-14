@@ -1,15 +1,32 @@
-let brightness = 255;
+document.addEventListener("DOMContentLoaded", function() {
+const container = document.querySelector(".items");
+let imageIndex = 1;
+let animationTimeout = null;
+let currentlyPlaying = false;
 
-// Function to reveal the next button/textarea and adjust brightness
-function openNextButton(nextButtonId) {
-  let nextElement = document.getElementById(nextButtonId);
+function addNewItem(x, y) {
+    const newItem = document.createElement("div");
+    newItem.className = "item";
+    newItem.style.left = `${x - 75}px`;
+    newItem.style.top = `${y - 100}px`;
 
-  // Reveal element
-  nextElement.classList.remove('hidden');
+    const img = document.createElement("img");
+    img.src=`https://raw.githubusercontent.com/kierstenmcc/interactivity-II-module-3/main/images/image${imageIndex}.png`;
+    newItem.appendChild(img);
+    imageIndex = (imageIndex % 15) + 1;
 
-  // Set background color for buttons only (not textarea)
-  if (nextElement.tagName === "BUTTON") {
-    nextElement.style.backgroundColor = `rgb(${brightness}, ${brightness}, ${brightness})`;
-    brightness -= 50; // decrease brightness for next button
+container.appendChild(newItem);
+manageItemLimit();
+}
+
+function manageItemLimit() {
+  while (container.children.length > 20) {
+    container.removeChild(container.firstChild);
   }
 }
+
+function startAnimation() {
+  if (currentlyPlaying || container.children.length === 0) return;
+
+
+});
