@@ -11,7 +11,7 @@ function addNewItem(x, y) {
     newItem.style.top = `${y - 100}px`;
 
     const img = document.createElement("img");
-    img.src=`https://raw.githubusercontent.com/kierstenmcc/interactivity-II-module-3/main/images/image${imageIndex}.png`;
+    img.src = `./images/image${imageIndex}.png`;
     newItem.appendChild(img);
     imageIndex = (imageIndex % 15) + 1;
 
