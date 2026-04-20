@@ -1,9 +1,19 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  const xpSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
+const xpSound = new Audio("assets/audio/xp-error.mp3");
 xpSound.volume = 0.5;
+
+xpSound.play();
+
+function playSound() {
+  xpSound.currentTime = 0;
+  xpSound.play().catch(() => {});
+}
+
+document.addEventListener("click", (e) => {
+  makeWindow(e.clientX, e.clientY);
+  playSound();
+});
 
   const template = document.getElementById("xpBox");
   const layer = document.querySelector(".windows-layer");
