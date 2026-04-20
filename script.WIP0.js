@@ -63,3 +63,30 @@ document.addEventListener("click", (e) => {
 
 });
 
+document.querySelectorAll(".icon").forEach(icon => {
+  icon.addEventListener("dblclick", (e) => {
+    makeWindow(e.clientX, e.clientY);
+  });
+});
+
+document.querySelectorAll(".icon").forEach(icon => {
+  let dragging = false;
+  let offsetX, offsetY;
+
+  icon.addEventListener("mousedown", (e) => {
+    dragging = true;
+    offsetX = e.clientX - icon.offsetLeft;
+    offsetY = e.clientY - icon.offsetTop;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    icon.style.left = (e.clientX - offsetX) + "px";
+    icon.style.top = (e.clientY - offsetY) + "px";
+    icon.style.position = "absolute";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+});

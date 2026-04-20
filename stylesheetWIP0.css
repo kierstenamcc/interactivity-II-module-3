@@ -99,7 +99,7 @@ body::after {
 }
 
 .xp-buttons .close {
-  background: rgb(255, 0, 238);
+  background: rgb(228, 17, 144);
   color: white;
 }
 
@@ -181,4 +181,37 @@ body::after {
   font-family: Tahoma, sans-serif;
   border: 2px solid black;
   cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  width: 80px;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: 1px 1px black;
+}
+
+.icon img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 6px hotpink);
+  transition: transform 0.2s ease;
+}
+
+.icon:hover img {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.icon {
+  background: rgba(255, 105, 180, 0.15);
+  border-radius: 12px;
+  padding: 6px;
+  backdrop-filter: blur(2px);
+}
+
+.icon:active {
+  transform: scale(0.95);
 }
