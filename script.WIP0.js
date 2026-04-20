@@ -1,30 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-const xpSound = new Audio("assets/audio/xp-error.mp3");
-xpSound.volume = 0.5;
+  // 🎧 SOUND
+  const xpSound = new Audio("assets/audio/xp-error.mp3");
+  xpSound.volume = 0.5;
 
-xpSound.play();
+  function playSound() {
+    xpSound.currentTime = 0;
+    xpSound.play().catch(() => {});
+  }
 
-function playSound() {
-  xpSound.currentTime = 0;
-  xpSound.play().catch(() => {});
-}
-
-document.addEventListener("click", (e) => {
-  makeWindow(e.clientX, e.clientY);
-  playSound();
-});
-
+  // 🪟 WINDOW SYSTEM
   const template = document.getElementById("xpBox");
   const layer = document.querySelector(".windows-layer");
 
   let topZ = 1000;
 
   function makeWindow(x, y) {
-    console.log("makeWindow fired");
-
-    if (!template) return console.error("NO TEMPLATE");
-    if (!layer) return console.error("NO LAYER");
+    if (!template || !layer) return;
 
     const xp = template.cloneNode(true);
 
@@ -45,6 +37,7 @@ document.addEventListener("click", (e) => {
       dragging = true;
       ox = e.clientX - xp.offsetLeft;
       oy = e.clientY - xp.offsetTop;
+      xp.style.zIndex = ++topZ;
     });
 
     document.addEventListener("mousemove", (e) => {
@@ -53,40 +46,102 @@ document.addEventListener("click", (e) => {
       xp.style.top = (e.clientY - oy) + "px";
     });
 
-    document.addEventListener("mouseup", () => dragging = false);
+    document.addEventListener("mouseup", () => {
+      dragging = false;
+    });
   }
 
+  // 🧠 ONE CLEAN CLICK HANDLER
   document.addEventListener("click", (e) => {
-    console.log("click registered");
+
+    // ❌ CLOSE BUTTON
+    if (e.target.closest(".close")) {
+      const win = e.target.closest(".xp-window");
+      if (win) {
+        win.remove();
+        playSound();
+      }
+      return;
+    }
+
+    // ❌ OK BUTTON
+    if (e.target.closest(".xp-ok")) {
+      const win = e.target.closest(".xp-window");
+      if (win) {
+        win.remove();
+        playSound();
+      }
+      return;
+    }
+
+    
+
+    // 🚫 IGNORE UI
+    if (
+      e.target.closest(".xp-window") ||
+      e.target.closest(".icon") ||
+      e.target.closest(".taskbar")
+    ) return;
+
+    // 💥 DESKTOP CLICK → spawn window
     makeWindow(e.clientX, e.clientY);
+    playSound();
   });
 
-});
 
 document.querySelectorAll(".icon").forEach(icon => {
-  icon.addEventListener("dblclick", (e) => {
-    makeWindow(e.clientX, e.clientY);
+  icon.addEventListener("dblclick", () => {
+    makeWindow(
+      window.innerWidth / 2,
+      window.innerHeight / 2
+    );
   });
 });
 
-document.querySelectorAll(".icon").forEach(icon => {
-  let dragging = false;
-  let offsetX, offsetY;
 
-  icon.addEventListener("mousedown", (e) => {
-    dragging = true;
-    offsetX = e.clientX - icon.offsetLeft;
-    offsetY = e.clientY - icon.offsetTop;
+
+  // 🧲 GRID SNAP ICONS
+  const GRID = 100;
+
+  function snap(v) {
+    return Math.round(v / GRID) * GRID;
+  }
+
+  document.querySelectorAll(".icon").forEach(icon => {
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    icon.addEventListener("mousedown", (e) => {
+      dragging = true;
+
+
+      offsetX = e.clientX - icon.offsetLeft;
+      offsetY = e.clientY - icon.offsetTop;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+
+      let x = e.clientX - offsetX;
+      let y = e.clientY - offsetY;
+
+      // 🧲 SNAP
+      icon.style.left = snap(x) + "px";
+      icon.style.top = snap(y) + "px";
+    });
+
+    document.addEventListener("mouseup", () => {
+      dragging = false;
+    });
+
+    // 🪟 DOUBLE CLICK → OPEN WINDOW
+    icon.addEventListener("dblclick", (e) => {
+      makeWindow(e.clientX, e.clientY);
+      playSound();
+    });
+
   });
 
-  document.addEventListener("mousemove", (e) => {
-    if (!dragging) return;
-    icon.style.left = (e.clientX - offsetX) + "px";
-    icon.style.top = (e.clientY - offsetY) + "px";
-    icon.style.position = "absolute";
-  });
-
-  document.addEventListener("mouseup", () => {
-    dragging = false;
-  });
 });

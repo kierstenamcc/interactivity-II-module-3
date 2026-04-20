@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +14,29 @@ body {
 }
 
 }
+/* New style for Windows XP vibe */
+/* --- XP WINDOW --- */
+.xp-window {
+  width: 350px;
+  background: url("pink_lep.jpeg") no-repeat center center;
+  background-size: cover;
+  border: 3px solid black;
+  border-radius: 6px;
+  box-shadow: 0 0 20px hotpink;
+  position: absolute;
+   z-index:9999;
+  top: 150px;
+  left: 150px;
+  font-family: Tahoma, sans-serif;
+}
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 0, 200, 0.15);
+  pointer-events: none;
+}
 
 h1{
   position: absolute;
@@ -52,29 +76,7 @@ height: 100%;
 object-fit: cover;
 }
 
-/* New style for Windows XP vibe */
-/* --- XP WINDOW --- */
-.xp-window {
-  width: 350px;
-  background: url("pink_lep.jpeg") no-repeat center center;
-  background-size: cover;
-  border: 3px solid black;
-  border-radius: 6px;
-  box-shadow: 0 0 20px hotpink;
-  position: absolute;
-   z-index:9999;
-  top: 150px;
-  left: 150px;
-  font-family: Tahoma, sans-serif;
-}
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(255, 0, 200, 0.15);
-  pointer-events: none;
-}
 
 /* --- TITLE BAR --- */
 .xp-title-bar {
@@ -101,6 +103,19 @@ body::after {
 .xp-buttons .close {
   background: rgb(228, 17, 144);
   color: white;
+}
+
+button:active {
+  background: red;
+}
+
+/* 🔥 PRESSED STATE */
+.xp-buttons button:active,
+.xp-ok:active {
+  border: 2px solid #000;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: translate(1px, 1px);
 }
 
 /* --- CONTENT --- */
@@ -137,20 +152,41 @@ body::after {
   overflow: hidden;
 }
 
+.desktop-icons {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  z-index: 10;
+}
+
 .icon {
-  position: absolute;
+  position: relative; /* 🔥 IMPORTANT (NOT absolute) */
   width: 80px;
-  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   font-family: Tahoma, sans-serif;
   font-size: 12px;
   color: white;
+
   cursor: pointer;
   user-select: none;
-  text-shadow: 1px 1px black;
 }
 
 .icon:hover {
-  transform: scale(1.05);
+  background: rgba(0, 0, 255, 0.2);
+  border-radius: 6px;
+}
+
+.icon:active {
+  background: rgba(255,255,255,0.3);
 }
 
 .windows-layer {
@@ -183,35 +219,3 @@ body::after {
   cursor: pointer;
 }
 
-.icon {
-  position: absolute;
-  width: 80px;
-  text-align: center;
-  font-family: Tahoma, sans-serif;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  text-shadow: 1px 1px black;
-}
-
-.icon img {
-  width: 48px;
-  height: 48px;
-  filter: drop-shadow(0 0 6px hotpink);
-  transition: transform 0.2s ease;
-}
-
-.icon:hover img {
-  transform: scale(1.2) rotate(-5deg);
-}
-
-.icon {
-  background: rgba(255, 105, 180, 0.15);
-  border-radius: 12px;
-  padding: 6px;
-  backdrop-filter: blur(2px);
-}
-
-.icon:active {
-  transform: scale(0.95);
-}
