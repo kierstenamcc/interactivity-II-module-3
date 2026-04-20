@@ -6,11 +6,17 @@
 
 html,
 body {
-  background-color: rgb(69, 25, 50);
+  body {
+  background: rgb(13,134,255) url('Windows_XP_background.webp') no-repeat center center;
+  background-size: cover;
 }
+
+}
+
 
 h1{
   position: absolute;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -44,4 +50,135 @@ h1{
 width: 100%;
 height: 100%;
 object-fit: cover;
+}
+
+/* New style for Windows XP vibe */
+/* --- XP WINDOW --- */
+.xp-window {
+  width: 350px;
+  background: url("pink_lep.jpeg") no-repeat center center;
+  background-size: cover;
+  border: 3px solid black;
+  border-radius: 6px;
+  box-shadow: 0 0 20px hotpink;
+  position: absolute;
+   z-index:9999;
+  top: 150px;
+  left: 150px;
+  font-family: Tahoma, sans-serif;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 0, 200, 0.15);
+  pointer-events: none;
+}
+
+/* --- TITLE BAR --- */
+.xp-title-bar {
+  background: linear-gradient(to bottom, #0A246A, #3A6EA5);
+  color: rgb(246, 159, 234);
+  padding: 5px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  cursor: grab;
+}
+
+/* --- BUTTONS --- */
+.xp-buttons button {
+  background: #C0C0C0;
+  border: 1px solid black;
+  margin-left: 2px;
+  width: 20px;
+  height: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.xp-buttons .close {
+  background: rgb(255, 0, 238);
+  color: white;
+}
+
+/* --- CONTENT --- */
+.xp-content {
+  padding: 15px;
+  color: rgb(249, 201, 232);
+  font-weight: bold;
+}
+
+/* --- OK BUTTON --- */
+.xp-ok {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background: #C0C0C0;
+  border: 2px solid #fff;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  cursor: pointer;
+}
+
+.xp-ok:active {
+  border: 2px solid #000;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+
+
+
+.desktop {
+  position: fixed;
+  inset: 0;
+  background: url("your-image.jpg") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.icon {
+  position: absolute;
+  width: 80px;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  text-shadow: 1px 1px black;
+}
+
+.icon:hover {
+  transform: scale(1.05);
+}
+
+.windows-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+}
+
+
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(to bottom, #1c4da1, #0a246a);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+
+.start-button {
+  background: hotpink;
+  padding: 6px 12px;
+  color: white;
+  font-family: Tahoma, sans-serif;
+  border: 2px solid black;
+  cursor: pointer;
 }

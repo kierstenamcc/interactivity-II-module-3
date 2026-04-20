@@ -1,54 +1,55 @@
-document.addEventListener("DOMContentLoaded", function() {
-const container = document.querySelector(".items");
-let imageIndex = 1;
-let animationTimeout = null;
-let currentlyPlaying = false;
 
-function addNewItem(x, y) {
-    const newItem = document.createElement("div");
-    newItem.className = "item";
-    newItem.style.left = `${x - 75}px`;
-    newItem.style.top = `${y - 100}px`;
 
-    const img = document.createElement("img");
-    img.src = `./images/image${imageIndex}.png`;
-    newItem.appendChild(img);
-    imageIndex = (imageIndex % 15) + 1;
+document.addEventListener("DOMContentLoaded", () => {
 
-container.appendChild(newItem);
-manageItemLimit();
-}
+  const xpSound = new Audio("https://www.myinstants.com/media/sounds/windows-xp-error.mp3");
+xpSound.volume = 0.5;
 
-function manageItemLimit() {
-  while (container.children.length > 20) {
-    container.removeChild(container.firstChild);
-  }
-}
+  const template = document.getElementById("xpBox");
+  const layer = document.querySelector(".windows-layer");
 
-function startAnimation() {
-  if (currentlyPlaying || container.children.length === 0) return;
-  currentlyPlaying = true;
+  let topZ = 1000;
 
- gsap.to(".item", {
-  y: 1000,
-  scale: 0.5,
-  opacity: 0,
-  duration: 0.5,
-  stagger: 0.025,
-  onComplete: function () {
-    this.targets().forEach((item) => {
-      if (item.parentNode) {
-        item.parentNode.removeChild(item);
-      }
+  function makeWindow(x, y) {
+    console.log("makeWindow fired");
+
+    if (!template) return console.error("NO TEMPLATE");
+    if (!layer) return console.error("NO LAYER");
+
+    const xp = template.cloneNode(true);
+
+    xp.style.display = "block";
+    xp.style.position = "absolute";
+    xp.style.left = x + "px";
+    xp.style.top = y + "px";
+    xp.style.zIndex = ++topZ;
+
+    layer.appendChild(xp);
+
+    const titleBar = xp.querySelector(".xp-title-bar");
+
+    let dragging = false;
+    let ox = 0, oy = 0;
+
+    titleBar.addEventListener("mousedown", (e) => {
+      dragging = true;
+      ox = e.clientX - xp.offsetLeft;
+      oy = e.clientY - xp.offsetTop;
     });
 
-    currentlyPlaying = false;
-  },
- });
+    document.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      xp.style.left = (e.clientX - ox) + "px";
+      xp.style.top = (e.clientY - oy) + "px";
+    });
+
+    document.addEventListener("mouseup", () => dragging = false);
   }
-  container.addEventListener("mousemove", function(event) {
-  clearTimeout(animationTimeout);
-  addNewItem(event.pageX, event.pageY);
-  animationTimeout = setTimeout(startAnimation, 100);
+
+  document.addEventListener("click", (e) => {
+    console.log("click registered");
+    makeWindow(e.clientX, e.clientY);
+  });
+
 });
-});
+
