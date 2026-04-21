@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // 🎧 SOUND
@@ -145,3 +146,11 @@ document.querySelectorAll(".icon").forEach(icon => {
   });
 
 });
+
+document.querySelectorAll(".icon").forEach(icon => {
+  icon.addEventListener("dblclick", () => {
+    const link = icon.dataset.link;
+    if (link) window.open(link, "_blank");
+  });
+});
+
