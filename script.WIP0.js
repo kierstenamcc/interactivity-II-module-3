@@ -77,18 +77,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
 
-    // 🚫 IGNORE UI
-    if (
-      e.target.closest(".xp-window") ||
-      e.target.closest(".icon") ||
-      e.target.closest(".taskbar")
-    ) return;
+     // 🚫 IGNORE UI + LINKS
+  if (
+    e.target.closest(".xp-window") ||
+    e.target.closest(".icon") ||
+    e.target.closest(".taskbar") ||
+    e.target.closest("a") // 🔥 THIS LINE FIXES YOUR ISSUE
+  ) return;
 
-    // 💥 DESKTOP CLICK → spawn window
-    makeWindow(e.clientX, e.clientY);
-    playSound();
-  });
-
+  // 💥 DESKTOP CLICK → spawn window
+  makeWindow(e.clientX, e.clientY);
+  playSound();
+});
 
 document.querySelectorAll(".icon").forEach(icon => {
   icon.addEventListener("dblclick", () => {
@@ -154,3 +154,5 @@ document.querySelectorAll(".icon").forEach(icon => {
   });
 });
 
+  // Chatbox info
+  
