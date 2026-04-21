@@ -35,7 +35,8 @@
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: white;
+  background-color: #272931;
+  border-radius: 5px;
 }
 
 /* Full-width textarea */
@@ -47,6 +48,7 @@
   background: #f1f1f1;
   resize: none;
   min-height: 200px;
+  border-radius: 5px;
 }
 
 /* When the textarea gets focus, do something */
@@ -61,6 +63,7 @@
   color: white;
   padding: 16px 20px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
   width: 100%;
   margin-bottom:10px;
@@ -69,7 +72,9 @@
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-  background-color: red;
+  background-color: rgb(219, 3, 118);
+  font-color: white;
+  border-radius: 5px;
 }
 
 /* Add some hover effects to buttons */
