@@ -50,9 +50,6 @@ function getReply() {
 
 reply.textContent = replies[Math.floor(Math.random() * replies.length)];
 
-
-
-
     chat.scrollTop = chat.scrollHeight;
   }, 800);
 }
