@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="stylemessages.css">
+    <script src="script.messages.js"></script>
     <title>Main Page</title>
 </head>
 <body>
@@ -11,14 +12,15 @@
     <!-- Back to main page -->
     <p>Go to the <a href="index.html">Main Page</a>.</p>
 
-
-        <!-- Message chat box -->
+<!-- Message chat box -->
 <div class="chat-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
+
+  <div class="chat-window">
+
     <!-- HEADER -->
     <div class="chat-header">
       <span>💬 MSN Messenger</span>
-      <button onclick="closeChat()">✖</button>
+      <button type="button" onclick="closeChat()">✖</button>
     </div>
 
     <!-- CHAT AREA -->
@@ -26,12 +28,19 @@
 
     <!-- INPUT AREA -->
     <div class="chat-input">
+
       <input id="messageInput" type="text" placeholder="Type a message...">
-      <button onclick="sendMessage()">Send</button>
+
+      <button type="button" onclick="sendMessage()">Send</button>
+
     </div>
-    </form>
+
   </div>
-  
+
+</div>
+<br><br>
+
+<img src="sparkle.gif" class="chat-gif" alt="gif" width="400">
 
 </body>
 </html>
