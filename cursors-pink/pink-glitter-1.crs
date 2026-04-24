@@ -1,0 +1,45 @@
+﻿[Arrow]
+Path=Pink Glitter Normal Select.ani
+
+[Help]
+Path=Pink Glitter Help Select.ani
+
+[AppStarting]
+Path=Pink Glitter Working in Background.ani
+
+[Wait]
+Path=Pink Glitter Busy.ani
+
+[Crosshair]
+Path=Pink Glitter Precision Select.ani
+
+[SizeNS]
+Path=Blue Glitter Vertical Resize.ani
+
+[NWPen]
+Path=Pink Glitter Handwriting.ani
+
+[No]
+Path=Pink Glitter Unavailable.ani
+
+[IBeam]
+Path=Pink Glitter Text Select.ani
+
+[SizeWE]
+Path=Pink Glitter Horizontal Resize.ani
+
+[SizeNWSE]
+Path=Pink Glitter Diagonal Resize 1.ani
+
+[SizeNESW]
+Path=Pink Glitter Diagonal Resize 2.ani
+
+[SizeAll]
+Path=Pink Glitter Move.ani
+
+[UpArrow]
+Path=Pink Glitter Alternate Select.ani
+
+[Hand]
+Path=Pink Glitter Link Select.ani
+

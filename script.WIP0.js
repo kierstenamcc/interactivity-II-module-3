@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // 🎧 SOUND
@@ -17,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let topZ = 1000;
 
   function makeWindow(x, y) {
-    if (!template || !layer) return;
+    if (!template || !layer) {
+      console.error("Missing template or layer");
+      return;
+    }
 
     const xp = template.cloneNode(true);
 
@@ -52,10 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🧠 ONE CLEAN CLICK HANDLER
+  // 🖱️ SINGLE CLICK SYSTEM
   document.addEventListener("click", (e) => {
 
-    // ❌ CLOSE BUTTON
+    // ❌ CLOSE
     if (e.target.closest(".close")) {
       const win = e.target.closest(".xp-window");
       if (win) {
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ❌ OK BUTTON
+    // ❌ OK
     if (e.target.closest(".xp-ok")) {
       const win = e.target.closest(".xp-window");
       if (win) {
@@ -75,19 +77,28 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    
+    // 🚫 IGNORE UI
+    if (
+      e.target.closest(".icon") ||
+      e.target.closest(".xp-window") ||
+      e.target.closest(".taskbar") ||
+      e.target.closest("a")
+    ) return;
 
-     // 🚫 IGNORE UI + LINKS
-  if (
-    e.target.closest(".xp-window") ||
-    e.target.closest(".icon") ||
-    e.target.closest(".taskbar") ||
-    e.target.closest("a") // 🔥 THIS LINE FIXES YOUR ISSUE
-  ) return;
+    // 💥 DESKTOP CLICK
+    makeWindow(e.clientX, e.clientY);
+    playSound();
 
-  // 💥 DESKTOP CLICK → spawn window
-  makeWindow(e.clientX, e.clientY);
-  playSound();
+  });
+
+  // 🖱️ ICON LINKS (ONLY ONCE)
+  document.querySelectorAll(".icon").forEach(icon => {
+    icon.addEventListener("dblclick", () => {
+      const link = icon.dataset.link;
+      if (link) window.open(link, "_blank");
+    });
+  });
+
 });
 
 document.querySelectorAll(".icon").forEach(icon => {
@@ -99,53 +110,18 @@ document.querySelectorAll(".icon").forEach(icon => {
   });
 });
 
-
-
-  // 🧲 GRID SNAP ICONS
+  // GRID SNAP ICONS (broken?)
   const GRID = 100;
 
   function snap(v) {
     return Math.round(v / GRID) * GRID;
   }
 
-  document.querySelectorAll(".icon").forEach(icon => {
-
-    let dragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    icon.addEventListener("mousedown", (e) => {
-      dragging = true;
-
-
-      offsetX = e.clientX - icon.offsetLeft;
-      offsetY = e.clientY - icon.offsetTop;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
-
-      let x = e.clientX - offsetX;
-      let y = e.clientY - offsetY;
-
-      // 🧲 SNAP
-      icon.style.left = snap(x) + "px";
-      icon.style.top = snap(y) + "px";
-    });
-
-    document.addEventListener("mouseup", () => {
-      dragging = false;
-    });
-
-    // 🪟 DOUBLE CLICK → OPEN WINDOW
+    // double click → OPEN WINDOW
     icon.addEventListener("dblclick", (e) => {
       makeWindow(e.clientX, e.clientY);
       playSound();
     });
-
-  });
-
-});
 
 document.querySelectorAll(".icon").forEach(icon => {
   icon.addEventListener("dblclick", () => {
@@ -155,4 +131,4 @@ document.querySelectorAll(".icon").forEach(icon => {
 });
 
   // Chatbox info
-  
+

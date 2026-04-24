@@ -13,6 +13,25 @@ body {
   background-size: cover;
 }
 
+/* --- custom cursor --- */
+cursor: url("xp.cur"), auto;
+
+body {
+  cursor: url("cursor_2/3dgArro_HD.cur"), auto;
+}
+
+a, .icon:hover {
+  cursor: url("cursor_2/3dgHelp_HD.cur"), pointer;
+}
+
+button {
+  cursor: url("cursor_2/3dgHand_HD.cur"), pointer;
+}
+
+
+
+
+
 
 }
 /* New style for Windows XP vibe */
@@ -52,7 +71,7 @@ h1{
   text-transform: uppercase;
   line-height: 100%;
   z-index: 1;
-  color: rgb(195, 62, 108);
+  color: rgb(195, 62, 144);
 }
 
 /* --- TITLE BAR --- */
@@ -133,7 +152,7 @@ button:active {
   font-family: Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 40px;
 
   z-index: 20;
 }
@@ -145,7 +164,6 @@ button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   font-family: Tahoma, sans-serif;
   font-size: 12px;
   color: rgb(195, 62, 108);
@@ -192,15 +210,6 @@ button:active {
   cursor: pointer;
 }
 
-
-.windows-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-}
-
-
 .items {
   position: fixed;
   top: 0;
@@ -225,3 +234,9 @@ height: 100%;
 object-fit: cover;
 }
 
+.windows-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
