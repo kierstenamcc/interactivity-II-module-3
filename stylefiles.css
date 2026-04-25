@@ -4,3 +4,35 @@
   background-size: cover;
   min-height: 100vh;
 }
+
+h1 {
+  font-family: Tahoma, sans-serif;
+  color: white;
+  text-shadow: 0 0 5px rgb(158, 255, 105);
+  position: absolute;
+ 
+  color: rgb(247, 221, 239);
+  text-shadow: 0 0 8px hotpink;
+  text-align: left;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  margin: 0;
+font-size: 28px;
+}
+
+p {
+  font-family: Tahoma, sans-serif;
+  color: white;
+  text-shadow: 0 0 5px rgb(158, 255, 105);
+  position: absolute;
+ 
+  color: rgb(247, 221, 239);
+  text-shadow: 0 0 8px hotpink;
+  text-align: left;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+
+  margin: 0;}
