@@ -6,7 +6,7 @@ function closeChat() {
   document.getElementById("chatBox").style.display = "none";
 }
 
-// reply logic (move OUTSIDE)
+// general responsed from friend (randomized)
 const replies = [
   "wyd?",
   "how r u?",
@@ -17,16 +17,16 @@ const replies = [
 let lastReply = "";
 
 function getReply(text) {
-  text = text.toLowerCase(); // makes matching better
+  text = text.toLowerCase();
 
-  // custom responses
+  // custom responses based on keywords
   if (text.includes("nothing")) return "boring 😭";
   if (text.includes("hi")) return "hey!!";
   if (text.includes("thank you") || text.includes("ty") || text.includes("thx")) return "no problem!";
   if (text.includes(":)")) return ":D";
   if (text.includes("class")) return "lame :P";
 
-  // random (no repeat)
+  // random responses(no repeat)
   let reply;
   do {
     reply = replies[Math.floor(Math.random() * replies.length)];
@@ -36,6 +36,7 @@ function getReply(text) {
   return reply;
 }
 
+// get user input and send message
 function sendMessage() {
   const input = document.getElementById("messageInput");
   const text = input.value.trim();
@@ -45,10 +46,10 @@ function sendMessage() {
 
   // user message
   const msg = document.createElement("div");
-  msg.classList.add("message", "user");
+  msg.classList.add("message", "user"); // bubble chats :)
   msg.textContent = text;
   chat.appendChild(msg);
-  input.value = "";
+  input.value = ""; // clear input box after sending
 
   chat.scrollTop = chat.scrollHeight;
 
@@ -58,7 +59,7 @@ function sendMessage() {
     reply.classList.add("message", "friend");
     chat.appendChild(reply);
 
-    const botReply = getReply(text); // USE the function
+    const botReply = getReply(text);
     reply.textContent = botReply;
 
     chat.scrollTop = chat.scrollHeight;
