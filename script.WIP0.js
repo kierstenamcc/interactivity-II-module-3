@@ -27,19 +27,44 @@ document.addEventListener("DOMContentLoaded", () => {
   xp.style.position = "absolute";
   xp.style.zIndex = ++topZ;
 
-  // 💬 NORMAL WINDOWS (mouse position)
+  // 💬 NORMAL WINDOWS
   if (type === "normal") {
     xp.style.left = x + "px";
     xp.style.top = y + "px";
   }
 
-  // 📜 POEM WINDOW (CENTERED)
+  // 📜 POEM WINDOW (CENTERED + CUSTOM CONTENT)
   if (type === "poem") {
     xp.classList.add("large-window");
 
     xp.style.left = "50%";
     xp.style.top = "50%";
     xp.style.transform = "translate(-50%, -50%)";
+
+    const content = xp.querySelector(".xp-content");
+    content.innerHTML = `
+      <h2>Nostalgia</h2>
+      <h3><i>by Peter Viereck</i></h3>
+      <br>
+      <p>
+        After eight thousand years among the stars,<br>
+        A sudden wistfulness for August<br>
+        Tugged me — like guilt — through half a cosmos<br>
+        Back to a planet sweet as canebrake,<br>
+<br>
+        After a mere eight flickers, nothing changed there<br>
+Among the birds, still just as blazing,<br>
+Among the rain of leaves on rivers,<br>
+The heartbreak of the south and blue,<br>
+The canebrake-sweet of August night;<br>
+But only<br>
+The people changed, my people, oh my people, my<br>
+forgetters.<br>
+<br>
+[...]
+
+      </p>
+    `;
   }
 
   layer.appendChild(xp);

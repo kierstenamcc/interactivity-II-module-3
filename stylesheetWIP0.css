@@ -30,6 +30,20 @@ button {
 
 }
 
+
+.large-window {
+  width: 1000px;
+  height: 500px;
+
+  top: 50% !important;
+  left: 50% !important;
+
+  transform: translate(-50%, -50%);
+}
+
+
+
+
 /* --- XP WINDOW --- */
 .xp-window {
   width: 350px;
