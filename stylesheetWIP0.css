@@ -30,11 +30,8 @@ button {
 
 
 
-
-
-
 }
-/* New style for Windows XP vibe */
+
 /* --- XP WINDOW --- */
 .xp-window {
   width: 350px;
@@ -102,7 +99,7 @@ h1{
 }
 
 button:active {
-  background: red;
+  background: rgb(220, 124, 202);
 }
 
 /* 🔥 PRESSED STATE */
@@ -238,5 +235,5 @@ object-fit: cover;
   position: absolute;
   inset: 0;
   z-index: 10;
-  pointer-events: none;
+  pointer-events: auto;
 }
