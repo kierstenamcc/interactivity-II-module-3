@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // 🎧 SOUND
+  // SOUND
   const xpSound = new Audio("assets/audio/xp-error.mp3");
   xpSound.volume = 0.5;
 
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     xpSound.play().catch(() => {});
   }
 
-  // 🪟 WINDOW SYSTEM
+  // WINDOW SYSTEM
   const template = document.getElementById("xpBox");
   const layer = document.querySelector(".windows-layer");
 
@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 🖱️ SINGLE CLICK SYSTEM
+  // SINGLE CLICK SYSTEM
   document.addEventListener("click", (e) => {
 
-    // ❌ CLOSE
+    //  CLOSE
     if (e.target.closest(".close")) {
       const win = e.target.closest(".xp-window");
       if (win) {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ❌ OK
+    //  OK
     if (e.target.closest(".xp-ok")) {
       const win = e.target.closest(".xp-window");
       if (win) {
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 🚫 IGNORE UI
+    // IGNORE UI
     if (
       e.target.closest(".icon") ||
       e.target.closest(".xp-window") ||
@@ -85,8 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
       e.target.closest("a")
     ) return;
 
-    // 💥 DESKTOP CLICK
+    // DESKTOP CLICK
     makeWindow(e.clientX, e.clientY);
     playSound();
 
-  });
+  })
+})
