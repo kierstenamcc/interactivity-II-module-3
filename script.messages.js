@@ -22,7 +22,7 @@ function getReply(text) {
   // custom responses based on keywords
   if (text.includes("nothing")) return "boring 😭";
   if (text.includes("hi")) return "hey!!";
-  if (text.includes("thank you") || text.includes("ty") || text.includes("thx")) return "no problem!";
+  if (text.includes("thank you") || text.includes("ty") || text.includes("thanks") || text.includes("thx")) return "no problem!";
   if (text.includes(":)")) return ":D";
   if (text.includes("class")) return "lame :P";
 
