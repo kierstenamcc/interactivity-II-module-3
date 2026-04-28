@@ -28,8 +28,6 @@ button {
   cursor: url("cursor_2/3dgHand_HD.cur"), pointer;
 }
 
-
-
 }
 
 /* --- XP WINDOW --- */
@@ -45,6 +43,7 @@ button {
   top: 150px;
   left: 150px;
   font-family: Tahoma, sans-serif;
+  pointer-events: auto; /* Makes both icon and OK and X work togetherrr */
 }
 
 body::after {
@@ -235,5 +234,5 @@ object-fit: cover;
   position: absolute;
   inset: 0;
   z-index: 10;
-  pointer-events: auto;
+  pointer-events: none;
 }
