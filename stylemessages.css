@@ -232,3 +232,56 @@ p {
   position: relative;
   top: 420px; /* positive = down, negative = up */
 }
+
+
+
+
+
+ .desktop-icons {
+  position: fixed;
+  top: 40px;
+  left: 20px;
+  font-family: Tahoma, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  z-index: 20;
+}
+
+.icon {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  color: rgb(230, 222, 225);
+
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+}
+
+.icon:hover {
+  background: rgba(226, 140, 237, 0.549);
+  border-radius: 6px;
+}
+
+.icon:active {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ONLY for bottom-right placement */
+.icon-bottom-right {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  z-index: 999;
+}
+
+.icon img {
+  width: 60px;
+  height: 60px;
+}

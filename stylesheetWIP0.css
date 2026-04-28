@@ -149,7 +149,6 @@ button:active {
   display: flex;
   flex-direction: column;
   gap: 40px;
-
   z-index: 20;
 }
 
