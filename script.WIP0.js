@@ -15,46 +15,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let topZ = 1000;
 
-  function makeWindow(x, y) {
-    if (!template || !layer) {
-      console.error("Missing template or layer");
-      return;
-    }
-
-    const xp = template.cloneNode(true);
-
-    xp.style.display = "block";
-    xp.style.position = "absolute";
-    xp.style.left = x + "px";
-    xp.style.top = y + "px";
-    xp.style.zIndex = ++topZ;
-
-    layer.appendChild(xp);
-
-    const titleBar = xp.querySelector(".xp-title-bar");
-
-    let dragging = false;
-    let ox = 0, oy = 0;
-
-    titleBar.addEventListener("mousedown", (e) => {
-      dragging = true;
-      ox = e.clientX - xp.offsetLeft;
-      oy = e.clientY - xp.offsetTop;
-      xp.style.zIndex = ++topZ;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-      if (!dragging) return;
-      xp.style.left = (e.clientX - ox) + "px";
-      xp.style.top = (e.clientY - oy) + "px";
-    });
-
-    document.addEventListener("mouseup", () => {
-      dragging = false;
-    });
+  function makeWindow(x, y, type = "normal") {
+  if (!template || !layer) {
+    console.error("Missing template or layer");
+    return;
   }
 
-  // 🖱️ SINGLE CLICK SYSTEM
+  const xp = template.cloneNode(true);
+
+  xp.style.display = "block";
+  xp.style.position = "absolute";
+  xp.style.zIndex = ++topZ;
+
+  // 💬 NORMAL WINDOWS (mouse position)
+  if (type === "normal") {
+    xp.style.left = x + "px";
+    xp.style.top = y + "px";
+  }
+
+  // 📜 POEM WINDOW (CENTERED)
+  if (type === "poem") {
+    xp.classList.add("large-window");
+
+    xp.style.left = "50%";
+    xp.style.top = "50%";
+    xp.style.transform = "translate(-50%, -50%)";
+  }
+
+  layer.appendChild(xp);
+
+  const titleBar = xp.querySelector(".xp-title-bar");
+
+  let dragging = false;
+  let ox = 0, oy = 0;
+
+  titleBar.addEventListener("mousedown", (e) => {
+    dragging = true;
+    ox = e.clientX - xp.offsetLeft;
+    oy = e.clientY - xp.offsetTop;
+    xp.style.zIndex = ++topZ;
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!dragging) return;
+    xp.style.left = (e.clientX - ox) + "px";
+    xp.style.top = (e.clientY - oy) + "px";
+  });
+
+  document.addEventListener("mouseup", () => {
+    dragging = false;
+  });
+}
+
+
+document.querySelector(".start-button").addEventListener("click", () => {
+  makeWindow(0, 0, "poem");
+  playSound();
+});
+
+
+  // SINGLE CLICK SYSTEM
   document.addEventListener("click", (e) => {
 
     // ❌ CLOSE
@@ -77,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 🚫 IGNORE UI
+    // IGNORE UI
     if (
       e.target.closest(".icon") ||
       e.target.closest(".xp-window") ||
@@ -85,13 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
       e.target.closest("a")
     ) return;
 
-    // 💥 DESKTOP CLICK
+    // DESKTOP CLICK
     makeWindow(e.clientX, e.clientY);
     playSound();
 
   });
 
-  // 🖱️ ICON LINKS (ONLY ONCE)
+  // ICON LINKS (ONLY ONCE)
   document.querySelectorAll(".icon").forEach(icon => {
     icon.addEventListener("dblclick", () => {
       const link = icon.dataset.link;
